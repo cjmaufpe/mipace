@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head></h:head>
+<h:body>
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+
+			<h:form>
+				<h2>DISTÂNCIA ECLIDIANA</h2>
+				<p:commandButton value="Exportar Dados" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+        			<p:fileDownload value="#{fileDownloadView.file}" />
+    			</p:commandButton>
+				<p:dataTable id="datatable" var="ranking"
+					value="#{euclidianaMB.listarankig}" paginator="true" rows="15">
+					<p:column headerText="Ranking">
+						<h:outputText value="#{ranking.ranking}" />
+					</p:column>
+					<p:column headerText="Cenário">
+						<h:outputText value="#{ranking.cenario}" />
+					</p:column>
+					<p:column headerText="Valor">
+						<h:outputText value="#{ranking.valor}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

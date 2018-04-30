@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head></h:head>
+<h:body>
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+
+			<h:form>
+				<c:if test="${multObjView.objetivoAtual == 'ok'}">
+					<h:outputLabel for="name" value="Deseja atribuir peso aos objetivos?" />
+					<br></br>
+					<p:link outcome="peso" value="Sim"></p:link>
+					<br></br>
+					<p:link outcome="escolhadistancia" value="Não"></p:link>
+				</c:if> 
+				
+				<c:if test="${multObjView.objetivoAtual != 'ok'}">
+				#{multObjView.objetivoAtual}
+				<p:selectOneListbox id="basic" value="#{multObjView.respostaAtual}">
+					<f:selectItem itemLabel="Maximizar" itemValue="Maximizar" />
+					<f:selectItem itemLabel="Minimizar" itemValue="Minimizar" />
+					<f:selectItem itemLabel="Omitir" itemValue="Omitir" />
+				</p:selectOneListbox>
+
+				<p:commandButton value="Próximo" id="btn_proximo" ajax="false"
+					actionListener="#{multObjView.processarOpcoes}" />
+				</c:if>
+				
+			</h:form>
+			
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head></h:head>
+<h:body>
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+
+			<h:form>
+				<h3>MINKOSKI</h3>
+				<h3>Digite o p (maior que 0.01)</h3>
+				<h:panelGrid columns="1" style="margin-bottom: 10px">
+					<p:inputNumber id="input" value="#{minkoskiView.pesinho}" decimalPlaces="2">   </p:inputNumber>
+				</h:panelGrid>
+			<p:commandButton value="Processar" id="btn" ajax="false" actionListener="#{minkoskiView.processar}" />
+			
+			<p:link outcome="minkoski2" value="Visualizar resultados!"></p:link>
+			</h:form>
+
+		</ui:define>
+		
+	</ui:composition>
+
+</h:body>
+</html>

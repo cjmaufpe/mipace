@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>MiPACE</title>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/public/css/bootstrap.css" />
+</h:head>
+<h:body>
+
+	<p:layout style="min-width:400px;min-height:600px;">
+
+		<p:layoutUnit position="west" resizable="true" size="250">
+			<h:form>
+				<p:menu>
+					<p:submenu label="MiPACE">
+						<p:menuitem url="/pages/private/funcionalidades/upload.xhtml"
+							value="Importar Dados"></p:menuitem>
+							<p:menuitem url="/pages/private/funcionalidades/ajuda.xhtml"
+							value="Ajuda"></p:menuitem>
+							<p:menuitem url="/logout"
+							value="Sair"></p:menuitem>
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit id="layoutcenter" position="center">
+
+
+			<div id="conteudo">
+				
+					<p:growl id="growl" showDetail="false" sticky="false" />
+					<ui:insert name="conteudo"></ui:insert>
+				
+			</div>
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

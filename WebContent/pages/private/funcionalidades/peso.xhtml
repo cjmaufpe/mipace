@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head></h:head>
+<h:body>
+	<ui:composition template="/pages/private/index.xhtml">
+		<ui:define name="conteudo">
+
+			<h:form>
+				<c:if test="${pesoView.atual == 'distancias'}">
+					<h:outputLabel for="name" value="Escolha o método de decisão:" />
+					<br></br>
+					<p:link outcome="euclidiana" value="Euclidiana"></p:link>
+					<br></br>
+					<p:link outcome="minkoski" value="Minkovski"></p:link>
+					<br></br>
+					<p:link outcome="manhattan" value="Manhattan"></p:link>
+				</c:if> 
+				
+				<c:if test="${pesoView.atual != 'distancias'}">
+				<h3>Digite o peso do objetivo #{pesoView.atual} entre 0.00 e 1.00</h3>
+				<h:panelGrid columns="1" style="margin-bottom: 10px">
+					
+					<p:inputNumber id="input3" value="#{pesoView.pesoAtual}" minValue="0.00" maxValue="1.00" decimalPlaces="2">   </p:inputNumber>
+				</h:panelGrid>
+				
+				<p:commandButton value="Próximo" id="btn" ajax="false" actionListener="#{pesoView.processar}" />
+				</c:if> 
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
